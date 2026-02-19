@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Marketplace</h1>
+
+<h2>Available Shops</h2>
+{% for shop in shops %}
+    <div style="border: 1px solid #ddd; padding: 1rem; margin: 1rem 0;">
+        <h3><a href="{% url 'shop_detail' shop.id %}">{{ shop.name }}</a></h3>
+        <p>{{ shop.description }}</p>
+        <p><strong>Type:</strong> {{ shop.get_shop_type_display }}</p>
+        <p><strong>Owner:</strong> {{ shop.owner.username }}</p>
+    </div>
+{% empty %}
+    <p>No shops available yet.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+    <a href="{% url 'create_shop' %}">Create Your Shop</a>
+{% endif %}
+{% endblock %}

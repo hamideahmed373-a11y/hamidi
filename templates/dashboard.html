@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>how does it work!!!!!!!!!!!!</title>
+</head>
+<body>
+{%for vid in videos%}
+<video src="{{vid.video.url}}"
+width="400" height="300"
+preload
+controls
+loop>
+<p>A video of a puppy playing in the snow</p>
+</video>
+{%endfor%}
+</body>
+</html>

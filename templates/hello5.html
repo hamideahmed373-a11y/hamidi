@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | Products & Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --border-radius: 10px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f9fafb;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            margin-left: 20px;
+            color: var(--dark);
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .nav-icons .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+            padding-left: 60px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+
+        /* Categories Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        /* Featured Listings */
+        .listings-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px 10px;
+            font-size: 1rem;
+            color: var(--gray);
+            cursor: pointer;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .listing-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .listing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .listing-img {
+            height: 200px;
+            width: 100%;
+            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .listing-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .listing-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .listing-content {
+            padding: 20px;
+        }
+
+        .listing-category {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .listing-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .listing-seller {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .seller-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            margin-right: 10px;
+            overflow: hidden;
+        }
+
+        .seller-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .seller-rating {
+            color: #ffc107;
+            font-size: 0.8rem;
+        }
+
+        .listing-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .listing-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Seller Types */
+        .seller-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .seller-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .seller-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .listings {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .categories, .seller-types {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .categories, .seller-types, .listings {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<form method="POST" action=''>
+    {% csrf_token %}
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a  class="logo">Market<span>Place</span></a>
+
+                <ul class="nav-links">
+                    <li><a href="{%url 'home'%}" class="active">Home</a></li>
+                    <li><a href="products"> Products & services </a></li>
+                    <li><a href="hello">Shops & agencies</a></li>
+                    <li><a href="how"> How It Works</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <a href="/seller"><i class="fas fa-shop"></i>shop account</a>
+
+
+                    <a href="/sell"><i class="fas fa-seller">🛒</i>sell a product</a>
+                </div>
+
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div id="good" class="container">
+            <h1>Find Products & Services from Trusted Sellers</h1>
+            <p>Discover a wide range of products and professional services from agencies, shops, freelancers, and more. Everything you need in one marketplace.</p>
+
+
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for products, services, or sellers..." name="searched">
+            
+            </div>
+                <br>
+                <input href="#vip"  type="submit" value="search" class="btn btn_primary" >
+
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+
+
+    <!-- Featured Listings -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Featured Listings</h2>
+            <p>Explore our most popular products and services</p>
+        </div>
+        <br>
+
+
+
+        <div id="vip" class="listings">
+
+            <!-- Listing 1 -->
+
+
+
+
+            {% for product in products%}
+            <div class="listing-card">
+                <div class="listing-img">
+                    <div class="listing-type">{{product.category}}</div>
+                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                </div>
+                <div class="listing-content">
+                    <div class="listing-category">{{product.category}}</div>
+                    <h3 class="listing-title">{{product.name}}</h3>
+                    <p>{{product.description}}</p>
+
+                    <div class="listing-seller">
+                        <div class="seller-avatar">
+                            <img src="{{product.shop.icon.url}}" alt="...">
+                        </div>
+                        <div class="seller-info">
+                            <h4><a class="seller-rating" href="{%url 'name' product.shop.id %}">{{product.shop.name}}</a></h4>
+                            <div class="seller-rating">
+
+                                {{product.shop.email}}<br>
+                                {{product.shop.phone}}<br>
+                                {{product.shop.place}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-footer">
+                        <div class="listing-price">Da{{product.price}}</div>
+
+                        <a href="{%url 'search' product.id %}" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+
+            <!-- Listing 3 -->
+            {%for shop in shops%}
+            <div class="listing-card">
+                <div class="listing-img">
+                    <div class="listing-type">{{shop.shop_type}}</div>
+                    <img src="{{shop.icon.url}}" alt="{{shop.shop_type}}">
+
+                </div>
+                <div class="listing-content">
+                    <div class="listing-category">{{shop.shop_type}}</div>
+                    <h3 class="listing-title">{{shop.name}}</h3>
+                    <p>{{shop.description}}</p>
+
+
+
+                    <div class="listing-seller">
+                        <div class="seller-avatar">
+                            <img src='{{shop.image}}' alt="Seller Avatar">
+                        </div>
+                        <div class="seller-info">
+                            <h4>{{shop.name}}</h4>
+                            <div class="seller-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                4.0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-footer">
+                        <div class="listing-price"><address>{{shop.place}}</address></div>
+                        <a href="{%url 'name' shop.id %}" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+
+    </section>
+
+    <!-- Seller Types Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Seller Types on Our Platform</h2>
+            <p>We welcome diverse sellers to offer their products and services</p>
+        </div>
+
+        <div class="seller-types">
+            <div class="seller-card">
+                <div class="seller-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Agencies</h3>
+                <p>Professional service providers offering specialized solutions in marketing, development, design and more.</p>
+                <a href="#good" class="btn btn-outline" style="margin-top: 15px;">Browse Agencies</a>
+            </div>
+
+            <div class="seller-card">
+                <div class="seller-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3>Shops</h3>
+                <p>Retailers and product sellers offering physical goods, handmade items, and digital products.</p>
+                <a href="#good" class="btn btn-outline" style="margin-top: 15px;">Browse Shops</a>
+            </div>
+
+            <div class="seller-card">
+                <div class="seller-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Freelancers</h3>
+                <p>Independent professionals offering their expertise in various fields from writing to programming.</p>
+                <a href="#good" class="btn btn-outline" style="margin-top: 15px;">Browse Freelancers</a>
+            </div>
+
+            <div class="seller-card">
+                <div class="seller-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <h3>Manufacturers</h3>
+                <p>Direct from source products and bulk offerings for businesses and individual consumers.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: 15px;">Browse Manufacturers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MarketPlace</h3>
+                    <p>Connecting buyers with trusted sellers of products and services since 2025.</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="{%url 'home'%}">Home</a></li>
+                        <li><a href="{%url 'products'%}">All Products & all services</a></li>
+                        <li><a href="{%url 'shops'%}">Shops & agencies</a></li>
+                        <li><a href="/seller">Become a Seller</a></li>
+                        <li><a href="/sell">publish a product</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Services</a></li>
+                        <li><a href="#">Creative</a></li>
+                        <li><a href="#">Physical Products</a></li>
+                        <li><a href="#">Business Services</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> hm@marketplace.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +213 0699777290</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> ALGIERS</li>
+                        <li><i class="fas fa-cat" style="margin-right: 10px;"></i> thanks for visiting my website</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 MarketPlace. All rights reserved. | <a href="#" style="color: #adb5bd;">Privacy Policy</a> | <a href="#" style="color: #adb5bd;">Terms of Service</a></p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.querySelector('i').classList.toggle('fa-bars');
+            mobileToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Filter Button Active State
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+            });
+        });
+
+        // Category Card Hover Effect
+        const categoryCards = document.querySelectorAll('.category-card');
+
+        categoryCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple cart counter
+        const cartCount = document.querySelector('.cart-count');
+        let count = 3;
+
+        // Simulate adding to cart
+        const addToCartButtons = document.querySelectorAll('.listing-card .btn');
+
+        addToCartButtons.forEach(button => {
+            if (button.textContent === 'Add to Cart') {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    count++;
+                    cartCount.textContent = count;
+
+                    // Visual feedback
+                    this.textContent = 'Added!';
+                    this.style.backgroundColor = 'var(--success)';
+
+                    setTimeout(() => {
+                        this.textContent = 'Add to Cart';
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</form>
+</body>
+</html>
