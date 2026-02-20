@@ -1,0 +1,2 @@
+web: gunicorn shops.wsgi
+web: python manage.py migrate && gunicorn shops.wsg
