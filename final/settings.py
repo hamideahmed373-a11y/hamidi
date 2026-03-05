@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import os.path
-import sys
 from pathlib import Path
 
 
@@ -42,8 +41,8 @@ SECRET_KEY = 'django-insecure-41^b*f%-@c^zy*x439m+=3t8u15khcr#qrxco)#8d1eu^ap=a$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
-CSRF_TRUSTED_ORIGINS=[]
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -108,12 +107,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-#        'ENGINE': 'django.db.backends.postgresql',
- #       'USER':'postgres',
-  #      'PASSWORD':'DBgcuyFJBFdGQzFTyDlEswtGIgercPBE',
-   #     'HOST':'postgres.railway.internal',
-    #    'PORT':'5432',
-     #   'NAME':'railway'
+
     }
 }
 
