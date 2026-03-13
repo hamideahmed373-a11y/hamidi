@@ -11,4 +11,5 @@ urlpatterns = [
     path('details/<int:productid>', product_details, name='search'),
     path('detail/<int:shopid>', shop_details, name='name'),
     path('how',how,name='how'),
+    path('ads.txt',ads_txt_view),
 ]

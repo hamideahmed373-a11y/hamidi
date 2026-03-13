@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 
 from .models import *
 from .forms import *
@@ -80,3 +80,7 @@ def home(request):
 def how(request):
     video=How.objects.all()
     return render(request,'dashboard.html',{'videos':video})
+def ads_txt_view(request):
+    # Option 1: Inline content (simplest)
+    content = 'google.com, ca-pub-1111613373641129T, f08c47fec0942fa0\n'
+    return HttpResponse(content, content_type='text/plain')
