@@ -37,11 +37,7 @@ SECRET_KEY = 'django-insecure-41^b*f%-@c^zy*x439m+=3t8u15khcr#qrxco)#8d1eu^ap=a$
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-cloudinary.config(
-    cloud_name='dwrvvplrb',
-    api_key='679731264829111',
-    api_secret='UZ7VvNWtVg6v-5YftpUgTumuFd8',
-)
+
 
 
 # Application definition
@@ -52,12 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary',
     'shops',
     'whitenoise.runserver_nostatic',
-
+    'cloudinary',
+    'cloudinary_storage',
 
 
 
@@ -163,8 +158,8 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFiles'
 STATIC_ROOT=BASE_DIR / 'staticfiles'
 
 
-MEDIA_URL='media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+#MEDIA_URL='media/'
+#MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
