@@ -51,8 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shops',
     'whitenoise.runserver_nostatic',
-    'cloudinary',
-    'cloudinary_storage',
+
 
 
 
@@ -158,15 +157,11 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFiles'
 STATIC_ROOT=BASE_DIR / 'staticfiles'
 
 
-#MEDIA_URL='media/'
-#MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CLOUDINARY_STORAGE={
-    'CLOUD_NAME':'dwrvvplrb',
-    'API_KEY':'679731264829111',
-    'API_SECRET':'UZ7VvNWtVg6v-5YftpUgTumuFd8',
-}
+
