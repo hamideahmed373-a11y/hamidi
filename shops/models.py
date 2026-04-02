@@ -15,7 +15,6 @@ class Base(models.Model):
     phone=models.CharField(max_length=10)
     email=models.EmailField()
     place=models.CharField()
-
     name = models.CharField(max_length=200)
     description = models.TextField()
     shop_type = models.CharField(max_length=20, choices=SHOP_TYPES)
