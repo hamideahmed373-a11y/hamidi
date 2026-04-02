@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import os.path
 from pathlib import Path
 
@@ -35,7 +37,11 @@ SECRET_KEY = 'django-insecure-41^b*f%-@c^zy*x439m+=3t8u15khcr#qrxco)#8d1eu^ap=a$
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+cloudinary.config(
+    cloud_name='dwrvvplrb',
+    api_key='679731264829111',
+    api_secret='UZ7VvNWtVg6v-5YftpUgTumuFd8',
+)
 
 
 # Application definition
@@ -46,9 +52,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'shops',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+
+
 
 
 ]
@@ -157,6 +167,6 @@ MEDIA_URL='media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
