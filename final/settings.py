@@ -9,8 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import cloudinary
-import cloudinary.uploader
 import cloudinary.api
 import os.path
 from pathlib import Path
@@ -19,7 +17,12 @@ from pathlib import Path
 
 
 
-
+cloudinary.config(
+    cloud_name = "dwrvvplrb",      # Your Cloud Name
+    api_key = "679731264829111",            # Your API Key
+    api_secret = "UZ7VvNWtVg6v-5YftpUgTumuFd8",      # Your API Secret
+    secure = True
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shops',
     'whitenoise.runserver_nostatic',
+    'cloudinary_storage',  # Add this
+    'cloudinary',
 
 
 
@@ -158,10 +163,18 @@ STATIC_ROOT=BASE_DIR / 'staticfiles'
 
 
 MEDIA_URL='media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+#MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Cloudinary Storage Settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dwrvvplrb',
+    'API_KEY': '679731264829111',
+    'API_SECRET': 'UZ7VvNWtVg6v-5YftpUgTumuFd8',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
