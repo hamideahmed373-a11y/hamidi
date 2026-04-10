@@ -22,7 +22,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+cloudinary.config(
+    cloud_name="dwrvvplrb",           # Your actual cloud name
+    api_key="679731264829111",         # Your actual API key
+    api_secret="UZ7VvNWtVg6v-5YftpUgTumuFd8",         # Your actual API secret
+    secure=True
+)
 
 
 # Quick-start development settings - unsuitable for production
@@ -166,9 +171,9 @@ STATIC_ROOT=BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Cloudinary Storage Settings
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dwrvvplrb',
-    'API_KEY': '679731264829111',
-    'API_SECRET': 'UZ7VvNWtVg6v-5YftpUgTumuFd8',
+    'CLOUD_NAME':'dwrvvplrb',
+    'API_KEY':'679731264829111',
+    'API_SECRET':'UZ7VvNWtVg6v-5YftpUgTumuFd8',
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
