@@ -12,7 +12,7 @@ class Base(models.Model):
         ('consultant', 'Consultant'),
         ('freelancer', 'Freelancer'),
     ]
-
+    avatar = CloudinaryField('images', null=True)
     phone=models.CharField(max_length=10)
     email=models.EmailField()
     place=models.CharField()
