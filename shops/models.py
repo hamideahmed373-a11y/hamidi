@@ -12,7 +12,7 @@ class Base(models.Model):
         ('consultant', 'Consultant'),
         ('freelancer', 'Freelancer'),
     ]
-    avatar = CloudinaryField('images', null=True)
+    icon = CloudinaryField('images', null=True)
     phone=models.CharField(max_length=10)
     email=models.EmailField()
     place=models.CharField()
@@ -22,7 +22,6 @@ class Base(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    icon=models.ImageField(upload_to='uploads/shops')
     def __str__(self):
         return self.name
 
