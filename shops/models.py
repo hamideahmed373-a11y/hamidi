@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 
@@ -46,3 +47,4 @@ class Offers(models.Model):
 
 class How(models.Model):
     video=models.FileField(upload_to='upload/how' )
+    avatar = CloudinaryField('image', null=True)

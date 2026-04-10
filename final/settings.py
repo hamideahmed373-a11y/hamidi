@@ -17,12 +17,7 @@ from pathlib import Path
 
 
 
-cloudinary.config(
-    cloud_name = "dwrvvplrb",      # Your Cloud Name
-    api_key = "679731264829111",            # Your API Key
-    api_secret = "UZ7VvNWtVg6v-5YftpUgTumuFd8",      # Your API Secret
-    secure = True
-)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -162,7 +157,7 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFiles'
 STATIC_ROOT=BASE_DIR / 'staticfiles'
 
 
-MEDIA_URL='media/'
+#MEDIA_URL='media/'
 #MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 
