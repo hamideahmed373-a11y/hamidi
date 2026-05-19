@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 from .models import *
 from .forms import *
@@ -20,6 +20,7 @@ def base(request):
         form=BaseForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('home')
     contex={'forms':form}
     return render(request,'new.html', contex)
 
@@ -29,6 +30,7 @@ def product_page(request):
         form=OffersForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('home')
     contex={'forms':form}
     return render(request,'new.html', contex)
 
